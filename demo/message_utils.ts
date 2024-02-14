@@ -350,6 +350,11 @@ class EmbedFrameImpl implements EmbedFrame {
         'iframe'
       ) as HTMLIFrameElement
       iframeElement.src = loginUrl
+
+      if (this.embedEnvironment.isCookielessEmbed) {
+        iframeElement.sandbox.add('allow-scripts')
+      }
+      
       iframeElement.id = this.iframeId
       if (this.className) {
         iframeElement.className = this.className
